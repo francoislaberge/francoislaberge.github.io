@@ -1,0 +1,57 @@
+<div class="article">
+  <h1>Bright Screen</h1>
+  <img src="images/bright-screen.jpg" title="Bright Screen" class="intro" />
+
+  <p>I recently created a Virtual Reality Movie Theatre demo during a hackathon at
+  work. It was a really fun week. I had to learn Unity, the Leap Motion SDK, and
+  the Oculus Unity SDK.</p>
+
+</div>
+
+<!--more-->
+
+<div class="article">
+
+  <p>Originally I was going to develop this project using WebVR compatible browsers,
+  these experiments just didn't run nearly as fast as other demos. You can find the browser-based experiment
+  <a href="http://francoislaberge.com/brightscreenjs/">here</a>. You'll need
+  an <a href="http://www.oculus.com/dk2/">Oculus DK2</a> and a WebVR
+  <a href="http://mozvr.com/downloads.html">compatible</a> <a href="http://blog.tojicode.com/2014/07/bringing-vr-to-chrome.html">browser</a> to view it.
+
+  <p>After extensive time on the <strong>web-vr-discuss@mozilla.org</strong> mailing list I learned
+  that this wouldn't be changing in the short term. I almost chose something else to do for my hackweek
+  project, but ultimately just went for it. Learning Unity ended up being way easier than I thought. It didn't
+  hurt at all that Oculus and Leap Motion integration were pretty much drag and drop solutions.</p>
+
+  <h2>The Hardware</h2>
+  <p>You'll notice I had to use a USB hub as there weren't enough USB slots in my new MacBook Pro to have the Leap Motion, DK2, and my iPhone* hard-lined.</p>
+
+  <p>* There's some unpolished code to control the movie with mobile devices.</p>
+  <img style="height: auto; max-width: 100%; width: 100%; margin: 0px auto;" src="images/bright-screen-hardware.jpg" title="Bright Screen"/>
+
+  <h2>Videos</h2>
+
+  <p>The following is a short video of a moment of using the Leap Motion to feel like you have the hands of a robot.</p>
+
+  <div style="position: relative; padding-bottom: 58.2%; padding-top: 30px; height: 0; overflow: hidden;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="//www.youtube.com/embed/v8wp6Nh3qPo" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+
+  <p>Here's a longer video showing sitting in different seats within the theatre. If you want it with an Oculus Headset you'll notice that the video has stereoscopic 3D playback support.</p>
+  <div style="position: relative; padding-bottom: 58.2%; padding-top: 30px; height: 0; overflow: hidden;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="//www.youtube.com/embed/xAtVu4J13Ks" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <p>I am working to get permission from my employer Brightcove to open source the demo. I'll upload a demo once that gets approved. So keep an eye on my github and this blog for news.</p>
+
+  <h2>References</h2>
+  <ul>
+    <li><a href="http://unity3d.com/unity/download">Unity 3D</a></li>
+    <li><a href="https://developer.oculus.com/">Oculus SDK</a></li>
+    <li><a href="https://developer.leapmotion.com/">Leap Motion SDK</a></li>
+  </ul>
+
+</div>
+
+<%- partial("../_promote-me") %>
