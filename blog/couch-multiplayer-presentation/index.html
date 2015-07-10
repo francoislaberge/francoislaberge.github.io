@@ -1,0 +1,106 @@
+<!DOCTYPE html><html><head><title>Couch Multiplayer Presentation</title><meta name="description" content="Couch Multiplayer Presentation"><meta name="viewport" content="width=device-width, initial-scale=1"><link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/styles/defaults.css"/>
+</head><body><div class="content"><div class="navigation"><div><a href="/"><h1>Francois Laberge</h1></a><ul><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li></ul></div></div><div class="navigation-separator clear"></div><div class="article">
+  <h1>Couch Multiplayer Presentation</h1>
+  <img src="images/small-couch-mario-luigi-cropped.png" title="Couch Multiplayer" class="intro" />
+
+  <p>Here are the original slides for the talk on 'Couch Multiplayer' I gave at a recent Node.js meetup.</p>
+
+  <p>The talk is about what the PC experience is missing relative to video game consoles and your tv/video watching setup? PCs are missing: standardized controllers, the comfort of the couch, non-networked multiplayer, and innovative input methods.</p>
+
+</div>
+
+<!--more-->
+
+<div class="article">
+  <div style="clear: both;"></div>
+
+  <h2>Slides:</h2>
+
+  <iframe class="scribd_iframe_embed" src="http://www.scribd.com/embeds/54646044/content?start_page=1&view_mode=slideshow&access_key=key-69skl9w98nk4fnypa62" data-auto-height="true" data-aspect-ratio="1.33333333333333" scrolling="no" id="doc_19329" width="100%" height="600" frameborder="0"></iframe><script type="text/javascript">(function() { var scribd = document.createElement("script"); scribd.type = "text/javascript"; scribd.async = true; scribd.src = "http://www.scribd.com/javascripts/embed_code/inject.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(scribd, s); })();</script>
+
+</div>
+
+<div class="follow-me">
+	<a href="http://twitter.com/francoislaberge">Follow me on Twitter</a>
+</div></div><script type="text/javascript" src="/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/highcharts.js"></script>
+<script type="text/javascript" src="/scripts/jquery.rwdImageMaps.min.js"></script>
+
+<script>
+  var chart;
+  $(document).ready(function() {
+
+    $('img[usemap]').rwdImageMaps();
+
+    if($('#demos-stats-chart').length!=0){
+      chart = new Highcharts.Chart({
+        chart: {
+          renderTo: 'demos-stats-chart',
+          defaultSeriesType: 'column'
+        },
+        title: {
+          text: 'Respective Browser Speeds'
+        },
+        subtitle: {
+          text: 'Source: Me'
+        },
+        xAxis: {
+          categories: [
+            'Me', 
+            'Beth', 
+            'Cereal', 
+            'Cereal /wo', 
+            'Earth', 
+            'Head', 
+            'Statue', 
+            'Statue /wo', 
+            'Objects'
+          ]
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Frames Per Second (fps)'
+          }
+        },
+        
+        tooltip: {
+          formatter: function() {
+            return ''+
+              this.x +': '+ this.y +' fps';
+          }
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+          }
+        },
+          series: [{
+          name: 'Firefox 3.6',
+          data: [37,52,21,30,31,12,7,11,8]
+      
+        }, {
+          name: 'Chrome 10.0',
+          data: [50,116,32,46,38,22,5,7,6]
+      
+        }, {
+          name: 'Firefox 4.0b11',
+          data: [98,92,37,54,98,26,13,18,14]
+      
+        }]
+      });
+    }
+  });
+</script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-16357083-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body></html>
