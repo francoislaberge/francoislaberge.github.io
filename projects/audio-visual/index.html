@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>AudioVis - HTML5 Canvas Element - Raphael JS Library, Sound Manager2 - Endergen</title></title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<meta name="description" content="Francois Laberge's demo of Audio Visualization using Raphael JS Library, HTML5 Canvas/<canvas> element, and SoundManager2">
+	<meta name="tags" content="Francois Laberge, Demos, Audio Visualization, Raphael JS Library, SoundManager2, <canvas>, HTML5">
+	
+	<link rel="shortcut icon" href="/images/audio.ico" type="image/vnd.microsoft.icon">
+	<link rel="icon" href="/images/audio.ico" type="image/vnd.microsoft.icon">
+	<link rel="icon" href="/images/audio.ico" type="image/x-icon">
+	
+	<link rel="stylesheet" href="audio-visual.css" type="text/css" media="all" />
+	<script src="scripts/raphael-1.5.2.min.js"></script>
+	<script src="scripts/soundmanager2.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+	<script src="scripts/canvas.js" type="text/javascript"></script>
+	<script src="scripts/audio.js" type="text/javascript"></script>
+	
+	<style>
+	 #instructions{
+      position: absolute;
+      z-index: 1;
+      width: 250px;
+      height: 130px;
+      background: black;
+      opacity: 0.7;
+      font-family: Trebuchet, Arial;
+      padding: 5px;
+      font-size: 13px;
+      color: white;
+    }
+    h1{
+      font-size: 100%;
+    }
+    a{
+      color: red; 
+    }
+	</style>
+	
+	<script>
+		$(document).ready( function() {
+			for (var i = 0; i < peakCount; i++) {
+				$('#peakGraph').append('<div class="PeakGraphLine"></div>');	
+			}
+			$('#peakGraph div').each( function() { peakElem.push( $(this) ); } );	
+			
+			canvas_init(); 
+			
+			$(window).resize(function(){
+				canvas_resize();
+			});
+			
+			// Make sure sound was loaded
+			// NOTE: This will need to be changed once there is more than one sound file being created,
+			// otherwise many identical 'message' divs will be created
+		});
+	</script>
+</head>
+ 
+<body>
+  
+	<div id="instructions">
+		
+		<a style="padding-bottom: 3px; display: block;" href="/projects/"><-- Back to Projects</a>
+    <h1>What is this?</h1>
+    <p>Real time music visualizatio using <a href="http://raphaeljs.com/">RaphaelJS</a> and <a href="http://www.schillmania.com/projects/soundmanager2/">SoundManager 2</a>. </p>
+    <p>It's an old demo. I should update to Web Audio now!.</p>
+    
+  </div>
+	<div id="floater"></div>
+	<div id="centered">
+ 		<div id="content">
+ 			<div id="paper">
+ 			</div>
+		</div>
+	</div>
+	
+	<div class="CanvasWrapper" style="z-index: -1; position: absolute; top: 0; left: 0px;">
+		<canvas id="theCanvas" width="640" height="480"></canvas>
+	</div>
+	
+ 	<script>
+		var bgWidth = 190,
+			bgHeight = 120,
+			arrowSize = 80,
+			pauseWidth = 25,
+			pauseHeight = 80,
+			paper = Raphael("paper", bgWidth+2,bgHeight+2);
+
+		var playing = false;
+			
+		function onSongFinished(){
+			if(playing){
+				pauseLeft.hide();
+				pauseRight.hide();
+				play.show();
+				play.attr({opacity:1.0});
+				background.attr({opacity:0.9});
+				playing = false;
+				paused = true;
+			}
+		}	
+		function eventsSetup(shape){
+			shape.mouseover(function(){
+				background.attr({fill:'#00ADEF',opacity:0.9});
+				if(playing){
+					play.attr({fill:"white",cursor:"pointer",stroke:"none"});
+					pauseLeft.attr({fill:"white",cursor:"pointer",stroke:"none"});
+					pauseRight.attr({fill:"white",cursor:"pointer",stroke:"none"});
+				}
+			});
+			shape.mouseout(function(){
+				background.attr({fill:'#3f3f3f',opacity:0.5});
+			});
+
+			shape.click(function(){
+				if(playing){
+					pauseLeft.hide();
+					pauseRight.hide();
+					play.show();
+
+					mySound.stop();
+					paused=true;
+				}
+				else{
+					play.hide();
+					pauseLeft.show().attr({opacity:1.0});
+					pauseRight.show().attr({opacity:1.0});;
+					play.attr({opacity:1.0});
+					
+					sound_toggle_playback();
+				}
+				playing = !playing;
+			});
+		}
+		function jqueryEvents(){
+			$("#paper").mouseenter(function(){
+					background.attr({fill:'#00ADEF',opacity:0.9});
+				if(playing){
+					pauseLeft.attr({opacity:1.0});
+					pauseRight.attr({opacity:1.0});				
+				}
+			});
+			$("#paper").mouseleave(function(){
+				if(playing&&this!=background){
+					background.animate({opacity:0.0},500,">");
+					play.animate({opacity:0.0},500,">");
+					pauseLeft.animate({opacity:0.0},500,">");
+					pauseRight.animate({opacity:0.0},500,">");
+				} else {
+					background.attr({fill:'#3f3f3f',opacity:0.5});
+				}
+			});
+			$("#paper").click(function(){
+				if(playing){
+					pauseLeft.hide();
+					pauseRight.hide();
+					play.show();
+
+					mySound.stop();
+					paused=true;
+					
+					play.attr({opacity: 1.0});
+					background.attr({fill:'#00ADEF',opacity:0.9});
+				}
+				else{
+					play.hide();
+					pauseLeft.show();
+					pauseRight.show();
+					
+					sound_toggle_playback();
+					background.attr({fill:'#00ADEF',opacity:0.9});
+				}
+				playing = !playing;
+			});
+		}
+			
+		
+		function createPath(points){
+			var str = 'M'+points[0][0]+' '+points[0][1];
+			for(var i = 1; i<points.length; i++){
+				str += 'L'+points[i][0]+' '+points[i][1];
+			}
+			var path = paper.path(str);
+			return path;
+		}
+		
+		// Create a background for the pause/play buttons
+		var background = paper.rect(1,1,bgWidth,bgHeight,10).attr({fill:'#3f3f3f',cursor: 'pointer',opacity:0.5,stroke:"none"});
+		
+		// Create the play button
+		var xOffset = (bgWidth-arrowSize)/2+5,
+			yOffset = (bgHeight-arrowSize)/2,
+			playPoints = [
+				[1,1],
+				[arrowSize+1,arrowSize/2],
+				[1,arrowSize+1],
+				[1,1]
+			];
+		
+		for(var i = 0; i<playPoints.length; i++){
+			playPoints[i][0]+=xOffset;playPoints[i][1]+=yOffset;
+		}
+		
+		var play = createPath(playPoints).attr({fill:"white",cursor:"pointer",stroke:"none"});
+		
+		// Create the pause button
+		var pauseLeft = paper.rect(0,(bgHeight-pauseHeight)/2,pauseWidth,pauseHeight,5),
+			pauseRight = paper.rect(pauseWidth+15,(bgHeight-pauseHeight)/2,pauseWidth,pauseHeight,5);
+			
+		pauseLeft.attr({fill:"#fff",stroke:"none",cursor:"pointer"}).hide();
+		pauseRight.attr({fill:"#fff",stroke:"none",cursor:"pointer"}).hide();
+		pauseLeft.translate(61,0);
+		pauseRight.translate(61,0);
+		
+		// Setup events for all of the shapes
+		/*eventsSetup(background);
+		eventsSetup(play);
+		eventsSetup(pauseLeft);
+		eventsSetup(pauseRight);*/
+		jqueryEvents();
+		
+	</script>
+	
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16357083-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>	
+</body>
+
