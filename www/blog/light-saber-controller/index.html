@@ -1,0 +1,171 @@
+<!DOCTYPE html><html><head><title>Light Saber</title><meta name="description" content="A light saber controller prototype we made at the 2013 Hasbro Hackathon"><meta name="viewport" content="width=device-width, initial-scale=1"><link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/styles/defaults.css"/>
+</head><body><div class="content"><div class="navigation"><div><a href="/"><h1>Francois Laberge</h1></a><ul><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li></ul></div></div><div class="navigation-separator clear"></div><div class="article">
+  <h1>Light Saber Controller</h1>
+  <img class="intro" title="Light Saber" src="images/light-saber.jpg">
+  <p>
+    Last week we went to the Hasbro Hackathon, it was a ton of fun. Brass Monkey
+    formed a team and our main entry was a cool multi-player music timing game.
+    The more interesting part though was having access to a bunch of 3D printers and
+    making a cool prototype using them.
+  </p>
+</div>
+
+<!--more-->
+
+<div class="article">
+  <p>TL;DR. <a href="#light-saber">Jump To The Video</a>.</p>
+
+  <p>
+    The neat thing about <a href="http://www.eventbrite.com/e/hasbro-hackathon-2013-playing-with-innovation-tickets-7013540689">this hackathon</a> was
+    that we had access to every tool imaginable, including 3D printer. More interestingly we also had access to piles of
+    their products that we were allowed to disassemble and reuse in any way we saw fit.
+    We competed to build the coolest hardware/software mashup over a two
+    day period. We barely slept for those two days. It was so much fun and we learned a lot.
+  </p>
+
+  <p>
+    MakerBot had an evangelist there and they had a few of their latest 3D printers. The evangelist
+    was helping everyone with their 3D printing questions. We wanted to come
+    up with a cool 3D printing idea. We always thought it'd be cool to create peripherals
+    that mixed with Brass Monkey's phones as controllers tech. The first idea that came to mind
+    based on products around us, was this Light Saber one.
+  </p>
+
+  <p>
+    The first problem we had was trying to figure out how to create a mold that would make it
+    so that we could easily attach and detach our iPhone to the light saber. It turned out that
+    we were able to reuse a design we found on <a href="http://www.thingiverse.com/">Thingiverse</a>.
+    The design was originally for attaching your phone to bike handlebars so people could use their
+    phone as a GPS and hands free radio. We only had to modify the radius of the attachment that
+    would wrap the light saber's handle. Once we did that it was pretty easy going. We were able
+    to print out the design in about an hour. It fit first try! Next up was getting the software
+    side of things working.
+  </p>
+
+  <p>
+    The software side ended up also being easy. This was thanks to leveraging the Brass Monkey Controller SDK and
+    reusing our <a href="http://playbrassmonkey.com/developers/html5/examples/accelerometer/index.html">HTML5 Accelerometer SDK Example</a>.
+    To try out the example, install the <a href="http://playbrassmonkey.com/getapp">Brass Monkey app</a> and open
+    the <a href="http://playbrassmonkey.com/developers/html5/examples/accelerometer/index.html">accelerometer example</a> page.
+    The demo displays a virtual device that matches the orientation of your phone as you move it. We just changed
+    the geometry of the on screen device to be shaped more like a light saber.
+    We then added the ability for the virtual light saber to flash red when the phone's screen was touched.
+  </p>
+
+  <p>
+    That was it, all told this prototype probably took about two and half hours to develop.
+  </p>
+
+  <h2>The almost final results</h2>
+  <p>
+    In our sleep deprived state we didn't record the final version, but here's an earlier video we made.
+    We hadn't yet fixed the virtual light saber to properly pivot around it's bottom.
+    Here it was rotating around it's center, that is why the on screen light saber
+    doesn't quite match the real one in this video.
+  </p>
+  <p>
+    It's hard to tell from this video, but the virtual light saber
+    would flash red when the real world one flashed red.
+  </p>
+  <div id="light-saber" style="position: relative; padding-bottom: 58.2%; padding-top: 30px; height: 0; overflow: hidden">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" src="//www.youtube.com/embed/vudLZZ40KVk" frameborder="0" allowfullscreen></iframe>
+  </div>
+  
+
+  <p>
+    This experiment definitely proved our thesis. Mobile phones/components are going to create or at least
+    finally mainstream many unique input methods due to constantly dropping cost of components, better prototyping tools,
+    and new markets larger than any gaming console in history.
+  </p>
+  <p>
+    <a href="http://playbrassmonkey.com/developers/">Brass Monkey's SDK</a> is
+    perfectly geared towards creating/prototyping these new forms of input. Check it out sometime.
+    It only takes minutes to get a basic controller going.
+  </p>
+
+</div>
+
+<div class="follow-me">
+	<a href="http://twitter.com/francoislaberge">Follow me on Twitter</a>
+</div></div><script type="text/javascript" src="/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/highcharts.js"></script>
+<script type="text/javascript" src="/scripts/jquery.rwdImageMaps.min.js"></script>
+
+<script>
+  var chart;
+  $(document).ready(function() {
+
+    $('img[usemap]').rwdImageMaps();
+
+    if($('#demos-stats-chart').length!=0){
+      chart = new Highcharts.Chart({
+        chart: {
+          renderTo: 'demos-stats-chart',
+          defaultSeriesType: 'column'
+        },
+        title: {
+          text: 'Respective Browser Speeds'
+        },
+        subtitle: {
+          text: 'Source: Me'
+        },
+        xAxis: {
+          categories: [
+            'Me', 
+            'Beth', 
+            'Cereal', 
+            'Cereal /wo', 
+            'Earth', 
+            'Head', 
+            'Statue', 
+            'Statue /wo', 
+            'Objects'
+          ]
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Frames Per Second (fps)'
+          }
+        },
+        
+        tooltip: {
+          formatter: function() {
+            return ''+
+              this.x +': '+ this.y +' fps';
+          }
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+          }
+        },
+          series: [{
+          name: 'Firefox 3.6',
+          data: [37,52,21,30,31,12,7,11,8]
+      
+        }, {
+          name: 'Chrome 10.0',
+          data: [50,116,32,46,38,22,5,7,6]
+      
+        }, {
+          name: 'Firefox 4.0b11',
+          data: [98,92,37,54,98,26,13,18,14]
+      
+        }]
+      });
+    }
+  });
+</script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-16357083-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body></html>

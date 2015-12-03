@@ -1,0 +1,143 @@
+<!DOCTYPE html><html><head><title>Francois Laberge</title><meta name="description" content="Francois Laberge's Blog"><meta name="viewport" content="width=device-width, initial-scale=1"><link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/styles/defaults.css"/>
+</head><body><div class="content"><div class="navigation"><div><a href="/"><h1>Francois Laberge</h1></a><ul><li><a href="/" class="active">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li></ul></div></div><div class="navigation-separator clear"></div><div class="excerpts"><a href="blog/bright-screen/"><div class="article">
+  <h1>Bright Screen</h1>
+  <img src="blog/bright-screen/images/bright-screen.jpg" title="Bright Screen" class="intro">
+
+  <p>I recently created a Virtual Reality Movie Theatre demo during a hackathon at
+  work. It was a really fun week. I had to learn Unity, the Leap Motion SDK, and
+  the Oculus Unity SDK.</p>
+
+</div>
+
+</a><div style="clear: both"></div><a href="blog/my-time-at-brass-monkey/"><div class="article">
+  <h1>My Time At Brass Monkey</h1>
+
+  <img src="blog/my-time-at-brass-monkey/images/brassmonkey.png" alt="Brass Monkey" class="intro"><p>This November 1st was my last day at my startup Brass Monkey. I wanted to write a nice goodbye and recap some highlights of my time at Brass Monkey as CTO.</p>
+</div>
+
+</a><div style="clear: both"></div><a href="blog/light-saber-controller/"><div class="article">
+  <h1>Light Saber Controller</h1>
+  <img class="intro" title="Light Saber" src="blog/light-saber-controller/images/light-saber.jpg">
+  <p>
+    Last week we went to the Hasbro Hackathon, it was a ton of fun. Brass Monkey
+    formed a team and our main entry was a cool multi-player music timing game.
+    The more interesting part though was having access to a bunch of 3D printers and
+    making a cool prototype using them.
+  </p>
+</div>
+
+</a><div style="clear: both"></div><a href="blog/michael-arrington-thought-emotely-was-kind-of-cool/"><div class="article">
+  <h1>Michael Arrington, Paul Graham, and Emotely</h1>
+    
+  <img src="blog/michael-arrington-thought-emotely-was-kind-of-cool/images/techcrunch-disrupt.png" alt="Tech Crunch Disrupt" class="intro">
+  
+  <p>Emotely was called up to talk to Paul Graham and Michael Arrington for 'Office Hours' at Techcrunch Disrupt. Unfortunately, we were not there to receive that advice...</p>
+    
+</div>
+
+</a><div style="clear: both"></div><a href="blog/couch-multiplayer-presentation/"><div class="article">
+  <h1>Couch Multiplayer Presentation</h1>
+  <img src="blog/couch-multiplayer-presentation/images/small-couch-mario-luigi-cropped.png" title="Couch Multiplayer" class="intro">
+
+  <p>Here are the original slides for the talk on 'Couch Multiplayer' I gave at a recent Node.js meetup.</p>
+
+  <p>The talk is about what the PC experience is missing relative to video game consoles and your tv/video watching setup? PCs are missing: standardized controllers, the comfort of the couch, non-networked multiplayer, and innovative input methods.</p>
+
+</div>
+
+</a><div style="clear: both"></div><a href="blog/cube-racer/"><div class="article">
+  <h1>Cube Racer</h1>
+  <img class="intro" title="Cube Racer" src="blog/cube-racer/images/racer.png">
+  <p>Check out this simple Javascript racing prototype. Of course, please first read the control scheme below.</p>
+</div>
+
+</a><div style="clear: both"></div><a href="blog/firefox4-is-rendering-my-demo-the-fastest/"><div class="article">
+  <h1>Firefox4 is rendering this demo the fastest</h1>
+  <img src="blog/firefox4-is-rendering-my-demo-the-fastest/images/bar-chart.png" class="intro" title="Firefox is faster">
+  <p>I was recently testing out Firefox4 beta. It has made huge strides in Javascript performance. It runs my old Normal Mapping demos much faster than in other browsers.</p>
+</div>
+
+</a><div style="clear: both"></div></div><div class="follow-me">
+	<a href="http://twitter.com/francoislaberge">Follow me on Twitter</a>
+</div></div><script type="text/javascript" src="/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/highcharts.js"></script>
+<script type="text/javascript" src="/scripts/jquery.rwdImageMaps.min.js"></script>
+
+<script>
+  var chart;
+  $(document).ready(function() {
+
+    $('img[usemap]').rwdImageMaps();
+
+    if($('#demos-stats-chart').length!=0){
+      chart = new Highcharts.Chart({
+        chart: {
+          renderTo: 'demos-stats-chart',
+          defaultSeriesType: 'column'
+        },
+        title: {
+          text: 'Respective Browser Speeds'
+        },
+        subtitle: {
+          text: 'Source: Me'
+        },
+        xAxis: {
+          categories: [
+            'Me', 
+            'Beth', 
+            'Cereal', 
+            'Cereal /wo', 
+            'Earth', 
+            'Head', 
+            'Statue', 
+            'Statue /wo', 
+            'Objects'
+          ]
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Frames Per Second (fps)'
+          }
+        },
+        
+        tooltip: {
+          formatter: function() {
+            return ''+
+              this.x +': '+ this.y +' fps';
+          }
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+          }
+        },
+          series: [{
+          name: 'Firefox 3.6',
+          data: [37,52,21,30,31,12,7,11,8]
+      
+        }, {
+          name: 'Chrome 10.0',
+          data: [50,116,32,46,38,22,5,7,6]
+      
+        }, {
+          name: 'Firefox 4.0b11',
+          data: [98,92,37,54,98,26,13,18,14]
+      
+        }]
+      });
+    }
+  });
+</script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-16357083-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body></html>
