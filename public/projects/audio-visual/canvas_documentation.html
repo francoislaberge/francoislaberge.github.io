@@ -1,0 +1,147 @@
+<html>
+<head>
+	<title>Canvas Documentation</title>
+	<style>
+		pre.idl {
+			background:#EEEEEE none repeat scroll 0 0;
+			border:thin solid;
+			color:black;
+			padding:0.5em 1em;
+		}
+		pre, code {
+			font-family:monospace;
+			font-size:inherit;
+			font-variant:normal;
+		}
+		pre {
+			margin-left:2em;
+			white-space:pre-wrap;
+		}
+	</style>
+</head>
+<body>
+<a href="http://www.nihilogic.dk/labs/canvas_music_visualization/idioteque_live_64kbit.mp3">mp3</a>
+Mozilla Developer Center <a href="https://developer.mozilla.org/En/Drawing_Graphics_with_Canvas">Documentation</a><br/><br/>
+
+Composite drawing <a href="https://developer.mozilla.org/samples/canvas-tutorial/6_1_canvas_composite.html">examples</a><br/><br/>
+
+Copied from WhatWG Canvas <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#the-2d-context">Documentation</a>
+<pre class="idl">interface <dfn id="canvasrenderingcontext2d">CanvasRenderingContext2D</dfn> {
+
+  // back-reference to the canvas
+  readonly attribute <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#htmlcanvaselement">HTMLCanvasElement</a> <a title="dom-context-2d-canvas" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-canvas">canvas</a>;
+
+  // state
+  void <a title="dom-context-2d-save" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-save">save</a>(); // push state on state stack
+  void <a title="dom-context-2d-restore" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-restore">restore</a>(); // pop state stack and restore state
+
+  // transformations (default transform is the identity matrix)
+  void <a title="dom-context-2d-scale" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-scale">scale</a>(in float x, in float y);
+  void <a title="dom-context-2d-rotate" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-rotate">rotate</a>(in float angle);
+  void <a title="dom-context-2d-translate" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-translate">translate</a>(in float x, in float y);
+  void <a title="dom-context-2d-transform" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-transform">transform</a>(in float m11, in float m12, in float m21, in float m22, in float dx, in float dy);
+  void <a title="dom-context-2d-setTransform" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-settransform">setTransform</a>(in float m11, in float m12, in float m21, in float m22, in float dx, in float dy);
+<!--
+  // v4 we've also received requests for:
+  void skew(...);
+  void reflect(...); // or mirror(...)
+-->
+  // compositing
+           attribute float <a title="dom-context-2d-globalAlpha" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-globalalpha">globalAlpha</a>; // (default 1.0)
+           attribute DOMString <a title="dom-context-2d-globalCompositeOperation" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a>; // (default source-over)
+<!--
+  // v4 we've also received requests for:
+  - turning off antialiasing to avoid seams when patterns are painted next to each other
+    - might be better to overdraw?
+    - might be better to just draw at a higher res then downsample, like for 3d?
+-->
+  // colors and styles
+           attribute any <a title="dom-context-2d-strokeStyle" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-strokestyle">strokeStyle</a>; // (default black)
+           attribute any <a title="dom-context-2d-fillStyle" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-fillstyle">fillStyle</a>; // (default black)
+  <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#canvasgradient">CanvasGradient</a> <a title="dom-context-2d-createLinearGradient" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-createlineargradient">createLinearGradient</a>(in float x0, in float y0, in float x1, in float y1);
+  <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#canvasgradient">CanvasGradient</a> <a title="dom-context-2d-createRadialGradient" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-createradialgradient">createRadialGradient</a>(in float x0, in float y0, in float r0, in float x1, in float y1, in float r1);
+  <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#canvaspattern">CanvasPattern</a> <a title="dom-context-2d-createPattern" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-createpattern">createPattern</a>(in <a href="embedded-content-0.html#htmlimageelement">HTMLImageElement</a> image, in DOMString repetition);
+  <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#canvaspattern">CanvasPattern</a> <a title="dom-context-2d-createPattern" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-createpattern">createPattern</a>(in <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#htmlcanvaselement">HTMLCanvasElement</a> image, in DOMString repetition);
+
+  // line caps/joins
+           attribute float <a title="dom-context-2d-lineWidth" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-linewidth">lineWidth</a>; // (default 1)
+           attribute DOMString <a title="dom-context-2d-lineCap" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-linecap">lineCap</a>; // "butt", "round", "square" (default "butt")
+           attribute DOMString <a title="dom-context-2d-lineJoin" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-linejoin">lineJoin</a>; // "round", "bevel", "miter" (default "miter")
+           attribute float <a title="dom-context-2d-miterLimit" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-miterlimit">miterLimit</a>; // (default 10)
+
+  // shadows
+           attribute float <a title="dom-context-2d-shadowOffsetX" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-shadowoffsetx">shadowOffsetX</a>; // (default 0)
+           attribute float <a title="dom-context-2d-shadowOffsetY" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-shadowoffsety">shadowOffsetY</a>; // (default 0)
+           attribute float <a title="dom-context-2d-shadowBlur" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-shadowblur">shadowBlur</a>; // (default 0)
+           attribute DOMString <a title="dom-context-2d-shadowColor" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-shadowcolor">shadowColor</a>; // (default transparent black)
+
+  // rects
+  void <a title="dom-context-2d-clearRect" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-clearrect">clearRect</a>(in float x, in float y, in float w, in float h);
+  void <a title="dom-context-2d-fillRect" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-fillrect">fillRect</a>(in float x, in float y, in float w, in float h);
+  void <a title="dom-context-2d-strokeRect" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-strokerect">strokeRect</a>(in float x, in float y, in float w, in float h);
+
+  // path API
+  void <a title="dom-context-2d-beginPath" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-beginpath">beginPath</a>();
+  void <a title="dom-context-2d-closePath" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-closepath">closePath</a>();
+  void <a title="dom-context-2d-moveTo" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-moveto">moveTo</a>(in float x, in float y);
+  void <a title="dom-context-2d-lineTo" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-lineto">lineTo</a>(in float x, in float y);
+  void <a title="dom-context-2d-quadraticCurveTo" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-quadraticcurveto">quadraticCurveTo</a>(in float cpx, in float cpy, in float x, in float y);
+  void <a title="dom-context-2d-bezierCurveTo" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-beziercurveto">bezierCurveTo</a>(in float cp1x, in float cp1y, in float cp2x, in float cp2y, in float x, in float y);
+  void <a title="dom-context-2d-arcTo" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-arcto">arcTo</a>(in float x1, in float y1, in float x2, in float y2, in float radius);
+  void <a title="dom-context-2d-rect" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-rect">rect</a>(in float x, in float y, in float w, in float h);
+  void <a title="dom-context-2d-arc" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-arc">arc</a>(in float x, in float y, in float radius, in float startAngle, in float endAngle, in boolean anticlockwise);
+  void <a title="dom-context-2d-fill" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-fill">fill</a>();
+  void <a title="dom-context-2d-stroke" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-stroke">stroke</a>();
+  void <a title="dom-context-2d-clip" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-clip">clip</a>();
+  boolean <a title="dom-context-2d-isPointInPath" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-ispointinpath">isPointInPath</a>(in float x, in float y);
+
+  // text
+           attribute DOMString <a title="dom-context-2d-font" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-font">font</a>; // (default 10px sans-serif)
+           attribute DOMString <a title="dom-context-2d-textAlign" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-textalign">textAlign</a>; // "start", "end", "left", "right", "center" (default: "start")
+           attribute DOMString <a title="dom-context-2d-textBaseline" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-textbaseline">textBaseline</a>; // "top", "hanging", "middle", "alphabetic", "ideographic", "bottom" (default: "alphabetic")
+  void <a title="dom-context-2d-fillText" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-filltext">fillText</a>(in DOMString text, in float x, in float y, [Optional] in float maxWidth);
+  void <a title="dom-context-2d-strokeText" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-stroketext">strokeText</a>(in DOMString text, in float x, in float y, [Optional] in float maxWidth);<!-- v4DVT
+  void <span title="dom-context-2d-fillVerticalText">fillVerticalText</span>(in DOMString text, in float x, in float y, [Optional] in float maxHeight);
+  void <span title="dom-context-2d-strokeVerticalText">strokeVerticalText</span>(in DOMString text, in float x, in float y, [Optional] in float maxHeight); -->
+  <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#textmetrics">TextMetrics</a> <a title="dom-context-2d-measureText" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-measuretext">measureText</a>(in DOMString text);
+
+  // drawing images
+  void <a title="dom-context-2d-drawImage" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-drawimage">drawImage</a>(in <a href="embedded-content-0.html#htmlimageelement">HTMLImageElement</a> image, in float dx, in float dy, [Optional] in float dw, in float dh);
+  void <a title="dom-context-2d-drawImage" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-drawimage">drawImage</a>(in <a href="embedded-content-0.html#htmlimageelement">HTMLImageElement</a> image, in float sx, in float sy, in float sw, in float sh, in float dx, in float dy, in float dw, in float dh);
+  void <a title="dom-context-2d-drawImage" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-drawimage">drawImage</a>(in <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#htmlcanvaselement">HTMLCanvasElement</a> image, in float dx, in float dy, [Optional] in float dw, in float dh);
+  void <a title="dom-context-2d-drawImage" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-drawimage">drawImage</a>(in <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#htmlcanvaselement">HTMLCanvasElement</a> image, in float sx, in float sy, in float sw, in float sh, in float dx, in float dy, in float dw, in float dh);
+  void <a title="dom-context-2d-drawImage" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-drawimage">drawImage</a>(in <a href="video.html#htmlvideoelement">HTMLVideoElement</a> image, in float dx, in float dy, [Optional] in float dw, in float dh);
+  void <a title="dom-context-2d-drawImage" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-drawimage">drawImage</a>(in <a href="video.html#htmlvideoelement">HTMLVideoElement</a> image, in float sx, in float sy, in float sw, in float sh, in float dx, in float dy, in float dw, in float dh);
+
+  // pixel manipulation
+  <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#imagedata">ImageData</a> <a title="dom-context-2d-createImageData" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-createimagedata">createImageData</a>(in float sw, in float sh);
+  <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#imagedata">ImageData</a> <a title="dom-context-2d-getImageData" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-getimagedata">getImageData</a>(in float sx, in float sy, in float sw, in float sh);
+  void <a title="dom-context-2d-putImageData" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-putimagedata">putImageData</a>(in <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#imagedata">ImageData</a> imagedata, in float dx, in float dy, [Optional] in float dirtyX, in float dirtyY, in float dirtyWidth, in float dirtyHeight);
+};
+
+interface <dfn id="canvasgradient">CanvasGradient</dfn> {
+  // opaque object
+  void <a title="dom-canvasgradient-addColorStop" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-canvasgradient-addcolorstop">addColorStop</a>(in float offset, in DOMString color);
+};
+
+interface <dfn id="canvaspattern">CanvasPattern</dfn> {
+  // opaque object
+};
+
+interface <dfn id="textmetrics">TextMetrics</dfn> {
+  readonly attribute float <a title="dom-textmetrics-width" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-textmetrics-width">width</a>;
+};
+
+interface <dfn id="imagedata">ImageData</dfn> {
+  readonly attribute unsigned long <a title="dom-imagedata-width" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-imagedata-width">width</a>;
+  readonly attribute unsigned long <a title="dom-imagedata-height" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-imagedata-height">height</a>;
+  readonly attribute <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#canvaspixelarray">CanvasPixelArray</a> <a title="dom-imagedata-data" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-imagedata-data">data</a>;
+};
+
+[<a title="dom-CanvasPixelArray-get" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-canvaspixelarray-get">IndexGetter</a>, <a title="dom-CanvasPixelArray-set" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-canvaspixelarray-set">IndexSetter</a>]
+interface <dfn id="canvaspixelarray">CanvasPixelArray</dfn> {
+  readonly attribute unsigned long <a title="dom-canvaspixelarray-length" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-canvaspixelarray-length">length</a>;
+};</pre>
+
+</body>
+</html>

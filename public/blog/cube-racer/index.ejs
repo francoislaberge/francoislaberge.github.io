@@ -1,0 +1,25 @@
+<div class="article">
+  <h1>Cube Racer</h1>
+  <img class="intro" title="Cube Racer" src="images/racer.png"/>
+  <p>Check out this simple Javascript racing prototype. Of course, please first read the control scheme below.</p>
+</div>
+
+<!--more-->
+
+<div class="article">
+  <p>I've had this <a href="">Demo</a> sitting around for a while, so I figured I might as well post it. It's very simple. Like I said, it's made with the <a href="https://developer.mozilla.org/en/canvas_tutorial">Canvas element</a>. It uses dirty rects to reduce having to clear the full screen each frame. It is amazing that full screen clearRect() calls can instantly make your frame rate terrible.</p>
+
+  <p>That is slower still than C/C++ based drawing from 10+ years ago. Hardware accelerated 2D rendering, I welcome you with open arms!</p>
+  <p>The controls are:</p>
+  <ul>
+  <li><strong>Left/Right</strong> to turn.</li>
+  <li><strong>Up/Down</strong> for Gas/Break.</li>
+  <li><strong>Spacebar</strong> to reset.
+  </ul> 
+  <p><strong>Note:</strong> There is an invisible wall for convenience along the border of the cube grid. So just turn around when you hit this.</p>
+  <p>I made the racer and 3D Library on a Sunday for a pitch of Emotely, thus it's simplicity. <a href="http://www.youtube.com/watch?v=NE8-TntjYB4&t=0m18s">Watch the Video</a> for how I ended up using it with Emotely.</p>
+  <p>That's it.</p>
+
+</div>
+
+<%- partial("../_promote-me") %>

@@ -1,0 +1,20 @@
+- function getCurrentPageClass(page) {
+  - if(page === currentPage) {
+    - return 'active';
+  - } else {
+    - return '';
+  - }
+- }
+
+div(class="navigation")
+  div
+    a(href="/")
+      h1 Francois Laberge
+    ul
+      li
+        a(href="/" class=getCurrentPageClass("home")) Home
+      li
+        a(href="/projects/" class=getCurrentPageClass("projects")) Projects
+      li
+        a(href="/about/" class=getCurrentPageClass("about")) About
+div(class="navigation-separator clear")

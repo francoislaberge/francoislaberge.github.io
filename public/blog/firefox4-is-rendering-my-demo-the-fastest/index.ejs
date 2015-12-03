@@ -1,0 +1,100 @@
+<div class="article">
+  <h1>Firefox4 is rendering this demo the fastest</h1>
+  <img src="images/bar-chart.png" class="intro" title="Firefox is faster"/>
+  <p>I was recently testing out Firefox4 beta. It has made huge strides in Javascript performance. It runs my old Normal Mapping demos much faster than in other browsers.</p>
+</div>
+
+<!--more-->
+
+<div class="article">
+  <p>There is one exception: the <a href="/labs/normal_mapping/beth/">Beth</a> demo runs faster in Chrome 9 & 10.</p>
+
+  <p>Here are the stats running on my iMac 2.66 Ghz Intel Core 2 Duo. All numbers are in Frames Per Second (FPS). <strong>Higher values are better.</strong></p>
+
+  <table id='demo-stats'>
+  <tr>
+  <td>Demo</td>
+  <td>Firefox 3.6</td>
+  <td>Chrome 10.0</td>
+  <td>Firefox 4.0b11</td>
+  </tr>
+
+  <tr>
+  <td><a href="/labs/normal_mapping/me/">Me</a></td>
+  <td>37</td>
+  <td>50</td>
+  <td>98</td>
+  </tr>
+
+  <tr>
+  <td><a href="/labs/normal_mapping/beth/">Beth</a></td>
+  <td>52</td>
+  <td>116</td>
+  <td>92</td>
+  </tr>
+
+  <tr>
+  <td><a href="/labs/normal_mapping/cereal/">Cereal</a></td>
+  <td>21</td>
+  <td>32</td>
+  <td>37</td>
+  </tr>
+
+  <tr>
+  <td><a href="/labs/normal_mapping/cereal/">Cereal</a> ( without glow effect )</td>
+  <td>30</td>
+  <td>46</td>
+  <td>54</td>
+  </tr>
+
+  <tr>
+  <td><a href="/labs/normal_mapping/earth/">Earth</a></td>
+  <td>31</td>
+  <td>38</td>
+  <td>98</td>
+  </tr>
+
+  <tr>
+  <td><a href="/labs/normal_mapping/head/">Head</a></td>
+  <td>12</td>
+  <td>22</td>
+  <td>26</td>
+  </tr>
+
+  <tr>
+  <td><a href="/labs/normal_mapping/large_mesh/">Statue</a></td>
+  <td>7</td>
+  <td>5</td>
+  <td>13</td>
+  </tr>
+
+  <tr>
+  <td><a href="/labs/normal_mapping/large_mesh/">Statue</a> ( without glow effect )</td>
+  <td>11</td>
+  <td>7</td>
+  <td>18</td>
+  </tr>
+
+  <tr>
+  <td><a href="/labs/normal_mapping/obj_test/">Exported Texture Mapped Objects</a></td>
+  <td>8</td>
+  <td>6</td>
+  <td>14</td>
+  </tr>
+
+  </table>
+
+  <!-- 3. Add the container -->
+  <div id="demos-stats-chart" style="width: 100%; height: 400px; margin: 0 auto; clip: scroll;"></div>
+  <br/>
+  <p>I added <a href="https://github.com/mrdoob/stats.js">stats.js</a> by <a href="http://twitter.com/#!/mrdoob">@mrdoob</a> to the demos so you can test it out yourselves. Please do leave a comment if you get dramatically different results.</p>
+  <h5>Todo</h5>
+  <ul>
+    <li>Write an article on rendering/calculation tricks I used for these demos.</li>
+    <li>Release a Javascript library for generating and rendering them.
+    <li>Write a Tutorial on how to take photos and build normals maps from them. Include an intuitive explanation of the math behind it.</li>
+  </ul>
+
+</div>
+
+<%- partial("../_promote-me") %>

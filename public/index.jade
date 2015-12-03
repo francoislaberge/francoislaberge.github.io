@@ -1,0 +1,16 @@
+- function excerpt(content, slug) {
+  - if(content.indexOf("<!--more-->") !== -1) {
+    - content = content.split("<!--more-->")[0];
+  - }
+  - content = content.replace(/src="images\//g, 'src="blog/' + slug + '/images/');
+  - return content;
+- }
+
+div(class="excerpts")
+  for article, slug in public.blog._data
+    a(href="blog/#{ slug }/")
+      != excerpt(partial("blog/"+slug+"/index"), slug)
+    div(style="clear: both;")
+
+    
+!= partial("blog/_promote-me")

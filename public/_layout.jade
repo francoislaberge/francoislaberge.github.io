@@ -1,0 +1,16 @@
+doctype
+html
+  head
+    title= title
+    meta(name="description" content="#{ description }")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    != partial("_styles")
+  body
+
+    div(class="content")
+      != partial("_navigation")
+      != yield
+      
+    != partial("_scripts")
+
+    != partial("_google-analytics")
