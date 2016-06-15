@@ -26,37 +26,52 @@ npm install
 ## Serve files and edit/add content
 
 ```bash
-npm start
+npm run dev
 ```
 
 ## Deploy
-This runs ```harp compile``` and then checkouts the ```gh-pages``` branch and sets it's contents to the contents of the ```www``` folder where the static website was built.
+
+
+ 1. Generate static version of site
 
 ```bash
-./bin/deploy.sh
+./bin/build.sh
 ```
+
+ 2. Now add/commit/push (to master) your files if they look good
+```bash
+git add .
+git commit -m "Write comment"
+git push
+```
+ 3. They are served via Github's Github Pages system: http://francoislaberge.com/
+
 
 ## Writing Articles
 
   1. Add a folder to ```public/blog```.
   2. Create file named ```index.md``` in that folder and write your article in there.
-  2. The article will be served up at ```francoislaberge.com/blog/<article-folder-name>/ ( <- Notice the trailing slash. We assume that most static hosting services automatically look for a index.html)
+  2. The article will be served up at `francoislaberge.com/blog/<article-folder-name>/` ( <- Notice the trailing slash. We assume that most static hosting services automatically look for a index.html)
   3. Put any related content in that folder. This is useful for demos and such to be cleanly isolated.
-  4. Submit a pull request.
-  5. Thanks!
+  4. Add a `_data.json` meta-data file to the new blog article folder. See another article for reference.
+  5. Add an entry in `public/blog/_data.json` for the newly created article.
 
 # Project Organization
 
 ```
 francoislaberge.com
   |- harp.json
+  |- blog (Statically generated from public/blog files)
+  |- projects (Statically generated from public/projects files)
   +- public
      |- _layout.jade (Master template that wraps each page)
      |- index.jade (Home page)
      +- blog
         |- _data.json
         +- *.md (All articles are written as a MarkDown file inside it's own folder so that we get nice URLs without .html extensions. Example  )
-  +- www (Where the static website is generated. Use ```npm compile``` to generate it.)
+  |- resume (Statically generated from public/resume files)
+  |- scripts (Statically generated from public/scripts files)
+  |- styles (Statically generated from public/styles files)
 ```
 
 ## TODO
