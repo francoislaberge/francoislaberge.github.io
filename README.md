@@ -49,12 +49,13 @@ git push
 
 ## Writing Articles
 
-  1. Add a folder to ```public/blog```.
-  2. Create file named ```index.md``` in that folder and write your article in there.
-  2. The article will be served up at `francoislaberge.com/blog/<article-folder-name>/` ( <- Notice the trailing slash. We assume that most static hosting services automatically look for a index.html)
-  3. Put any related content in that folder. This is useful for demos and such to be cleanly isolated.
-  4. Add a `_data.json` meta-data file to the new blog article folder. See another article for reference.
-  5. Add an entry in `public/blog/_data.json` for the newly created article.
+  1. Create a new blog article by duplicating the `public/blog/template` folder. It should live in ```public/blog```.
+  1. Put the blog content in the article's ```index.ejs```
+  1. Make sure to change the image/template-article-icon.png, the article's title, snippet, and etc.
+  1. The article will be served up at `francoislaberge.com/blog/<article-folder-name>/` ( <- Notice the trailing slash. We assume that most static hosting services automatically look for a index.html)
+  1. Put any related content in that folder. This is useful for demos and such to be cleanly isolated.
+  1. Add a `_data.json` meta-data file to the new blog article folder. See another article for reference.
+  1. Add an entry in `public/blog/_data.json` for the newly created article.
 
 # Project Organization
 
@@ -68,7 +69,7 @@ francoislaberge.com
      |- index.jade (Home page)
      +- blog
         |- _data.json
-        +- *.md (All articles are written as a MarkDown file inside it's own folder so that we get nice URLs without .html extensions. Example  )
+        +- *.ejs (Most articles are written as a EJS based files inside it's own folder)
   |- resume (Statically generated from public/resume files)
   |- scripts (Statically generated from public/scripts files)
   |- styles (Statically generated from public/styles files)
