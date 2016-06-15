@@ -1,0 +1,6 @@
+{
+  "index": {
+    "title": "Time Travel Debugging",
+    "description": "Time Travel Debugging oriented frameworks and languages are all the rage lately. I'm going to cover various techniques for implementing time travel debugging, different benefits to doing so, link to frameworks/languages that make it easy to use in a project, and with walk through a simple implementation."
+  }
+}

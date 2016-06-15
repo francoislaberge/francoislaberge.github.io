@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/harp server --port 8080",
+    "dev": "./node_modules/.bin/harp server --port 8080",
     "test": "echo 'No Tests Yet!'"
   },
   "dependencies": {
