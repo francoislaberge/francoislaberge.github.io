@@ -6,12 +6,12 @@ To contribute to this project (as say a guest author), please submit pull reques
 # Installation
 
  1. Install Requirements
-  - [Node](http://nodejs.org/download/). 
- 2. *Note*: Harp is wrapped by npm scripts and run directly as a local module rather than a global one.
- 3. Clone the project 
+  - [Node](http://nodejs.org/download/).
+ 2. *Note*: You do not need to install Harp globally, as it is a devDependency and we call it's project local binary
+ 3. Clone the project
 
 ```bash
-git clone git@github.com:francoislaberge/com.git francoislaberge.com
+git clone git@github.com:francoislaberge/francoislaberge.github.io.git francoislaberge.com
 ```
 
  4. Install Node Dependencies
@@ -38,7 +38,7 @@ This runs ```harp compile``` and then checkouts the ```gh-pages``` branch and se
 
 ## Writing Articles
 
-  1. Add a folder to ```public/blog```. 
+  1. Add a folder to ```public/blog```.
   2. Create file named ```index.md``` in that folder and write your article in there.
   2. The article will be served up at ```francoislaberge.com/blog/<article-folder-name>/ ( <- Notice the trailing slash. We assume that most static hosting services automatically look for a index.html)
   3. Put any related content in that folder. This is useful for demos and such to be cleanly isolated.
@@ -48,12 +48,12 @@ This runs ```harp compile``` and then checkouts the ```gh-pages``` branch and se
 # Project Organization
 
 ```
-francoislaberge.com 
+francoislaberge.com
   |- harp.json
   +- public
      |- _layout.jade (Master template that wraps each page)
      |- index.jade (Home page)
-     +- blog 
+     +- blog
         |- _data.json
         +- *.md (All articles are written as a MarkDown file inside it's own folder so that we get nice URLs without .html extensions. Example  )
   +- www (Where the static website is generated. Use ```npm compile``` to generate it.)
@@ -61,7 +61,7 @@ francoislaberge.com
 
 ## TODO
 
- 
+
  - Port over all old content
  - Add more
  - Link to github source.
