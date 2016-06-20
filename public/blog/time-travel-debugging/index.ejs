@@ -38,7 +38,15 @@
       [Why isn't it used](https://programmers.stackexchange.com/questions/181527/why-is-reverse-debugging-rarely-used)
         [$41 Billion lost annually because of not adopting it](http://www.prweb.com/releases/2013/1/prweb10298185.htm)
 
-    https://stackoverflow.com/questions/1470434/how-does-reverse-debugging-work
+        https://stackoverflow.com/questions/1470434/how-does-reverse-debugging-work
+
+        Ideas:
+          - User space watch (via proxies), would listen for the last trigger that
+            matches some condition and then creates a debugger statement (or uses a devtools extension approach)
+          - Having embeddable subsystems with reversable properties is the way to go, and
+            this is the pattern you get if you organize things correctly
+            - I know some game physics engines do this, find one, also build an example of this, it'd be funny (Actually too time consuming)
+
 
   </p>
 
