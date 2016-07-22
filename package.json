@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "./node_modules/.bin/harp server --port 8080",
+    "build": "./bin/build.sh",
     "test": "echo 'No Tests Yet!'"
   },
   "dependencies": {

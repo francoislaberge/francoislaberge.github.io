@@ -35,7 +35,7 @@ npm run dev
  1. Generate static version of site
 
 ```bash
-./bin/build.sh
+npm run build
 ```
 
  2. Now add/commit/push (to master) your files if they look good
