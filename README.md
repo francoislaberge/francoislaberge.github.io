@@ -26,7 +26,7 @@ npm install
 ## Serve files and edit/add content
 
 ```bash
-npm run dev
+npm start
 ```
 
 ## Deploy
