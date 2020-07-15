@@ -6,6 +6,6 @@
     "test": "echo 'No Tests Yet!'"
   },
   "dependencies": {
-    "harp": "0.18.0"
+    "harp": "0.32.0"
   }
 }
